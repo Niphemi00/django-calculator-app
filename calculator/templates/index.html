@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-">
+    <nav class="navbar navbar-expand-sm navbar-light bg-secondary sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold fs-3" href="#">NI-Calculator App</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link a" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#instructions">Instructions</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-md-6 mx-auto my-0">
+          {% if error %}
+          <div id="message" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ error }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% else %}
+          <div id="message" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>The answer is {{ answer }}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" style="margin: 1rem auto 0 auto">
+          <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="{% static 'calimages.png' %}" alt="" />
+          </div>
+
+          <div class="card shadow-lg">
+            <div class="card-body">
+              <form action="{% url 'submitquery' %}" method="get">
+                <div class="form-group">
+                  <input
+                    type="search"
+                    class="form-control"
+                    name="query"
+                    id="query"
+                  />
+                </div>
+                <div class="row mt-3">
+                  <div class="col-6 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">
+                      Submit
+                    </button>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center">
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-6 mx-auto my-0">
+          <p class="display-4 text-center" id="about" name="about">About</p>
+          <hr />
+          <p class="lead text-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+            earum in dolore ipsam animi harum nemo
+          </p>
+        </div>
+        <div class="col-md-6 mx-auto my-0">
+          <p class="display-4 text-center" id="instructions" name="instructions">Instructions</p>
+          <hr />
+          <p class="lead text-center">
+            <ul class="list-group">
+              <li class="list-group-item">'+' for Addition</li>
+              <li class="list-group-item">'-' for Subtraction</li>
+              <li class="list-group-item">'*' for Multiplication</li>
+              <li class="list-group-item">'//' for Floor divsion</li>
+              <li class="list-group-item">'()' for Brackets</li>
+              <li class="list-group-item">sqrt() for Square root</li>
+              <li class="list-group-item">% for modulus</li>
+              <li class="list-group-item">sin(), cos() or tan() for Trig functions/li>
+              <li class="list-group-item">'' for Divsion</li>
+              <li class="list-group-item">'' for Divsion</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <footer
+          class="bottom mx-1 d-flex align-content-center justify-content-center"
+        >
+          <p>niphemi &copy <br />|| 2024 ||</p>
+        </footer>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    >
+  </script>
+  </body>
+</html>
